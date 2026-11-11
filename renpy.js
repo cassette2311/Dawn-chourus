@@ -2,7 +2,7 @@ var Module=typeof Module!="undefined"?Module:{};var ENVIRONMENT_IS_WEB=typeof wi
 // Ren'Py Multi-part Asset Patch
 window.fetch = (originalFetch => (url, options) => {
     if (url.includes('game.zip')) {
-        const chunks = ['archive.zip.001', 'archive.zip.002', 'archive.zip.003', 'archive.zip.004', 'archive.zip.005'];
+        const chunks = ['archive.rpa.001', 'archive.rpa.002', 'archive.rpa.003', 'archive.rpa.004', 'archive.rpa.005'];
         return Promise.all(chunks.map(c => originalFetch(c).then(r => r.arrayBuffer())))
             .then(buffers => new Response(new Blob(buffers, { type: 'application/zip' })));
     }
